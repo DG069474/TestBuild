@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+test{
+useTestNG()
+
+testLogging.showStandardStreams = true
+
+include 'testAdds.Java'
+}
