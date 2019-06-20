@@ -1,9 +1,28 @@
 apply plugin: 'java'
 
-test{
-useTestNG()
 
-testLogging.showStandardStreams = true
+test {
+  testLogging {
+    events "passed", "skipped", "failed", "standardOut", "standardError"
+  }
+  dependsOn 'cleanTest'
+}
 
-include 'testAdds.Java'
+dependencies {
+  testCompile("junit:junit")
+}
+
+sourceSets {
+  src {
+    main {
+       java {
+           srcDir 'java'
+        }
+       test {
+           java {
+            srcDir 'test'
+           }
+        }
+    }
+  }
 }
